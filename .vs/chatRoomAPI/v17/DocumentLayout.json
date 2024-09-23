@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\sideproject\\chatroomapi\\chatroomapi\\controllers\\lineaccountlogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\controllers\\lineaccountlogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\sideproject\\chatroomapi\\chatroomapi\\model\\requestlineaccountlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\model\\requestlineaccountlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\sideproject\\chatroomapi\\chatroomapi\\model\\responseerrormessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\model\\responseerrormessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ResponseErrorMessage.cs",
+              "DocumentMoniker": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Model\\ResponseErrorMessage.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Model\\ResponseErrorMessage.cs",
+              "ToolTip": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Model\\ResponseErrorMessage.cs",
+              "RelativeToolTip": "chatRoomAPI\\Model\\ResponseErrorMessage.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T07:56:47.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RequestLineAccountLogin.cs",
+              "DocumentMoniker": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Model\\RequestLineAccountLogin.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Model\\RequestLineAccountLogin.cs",
+              "ToolTip": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Model\\RequestLineAccountLogin.cs",
+              "RelativeToolTip": "chatRoomAPI\\Model\\RequestLineAccountLogin.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T07:45:05.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LineAccountLoginController.cs",
+              "DocumentMoniker": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Controllers\\LineAccountLoginController.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\LineAccountLoginController.cs",
+              "ToolTip": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Controllers\\LineAccountLoginController.cs",
+              "RelativeToolTip": "chatRoomAPI\\Controllers\\LineAccountLoginController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T07:43:58.269Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
