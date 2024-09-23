@@ -1,6 +1,8 @@
 ﻿using chatRoomAPI.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
 
 namespace chatRoomAPI.Controllers
 {
@@ -8,37 +10,48 @@ namespace chatRoomAPI.Controllers
     [ApiController]
     public class LineAccountLoginController : ControllerBase
     {
+                public IConfiguration Configuration { get; }
         [HttpPost]
         public IActionResult LineAccountLogin([FromBody] RequestLineAccountLogin requestData)
         {
             try
             {
-                if (requestData == null)
+                DatabaseSettings dbs = new DatabaseSettings(Configuration);
+                string connectionString;
+
+                using (SqlConnection connection = new SqlConnection())
                 {
-                    return Ok(new ResponseErrorMessage
+                    if (requestData == null)
                     {
-                        ResultCode = "1",
-                        ErrorMessage = "傳入參數為空！"
-                    });
+                        return Ok(new ResponseErrorMessage
+                        {
+                            ResultCode = "1",
+                            ErrorMessage = "傳入參數為空！"
+                        });
+                    }
+
+                    if (string.IsNullOrEmpty(requestData.UserId) || string.IsNullOrEmpty(requestData.UserName))
+                    {
+                        return Ok(new ResponseErrorMessage
+                        {
+                            ResultCode = "1",
+                            ErrorMessage = "傳入參數錯誤！"
+                        });
+                    }
+
+
+
+
+
                 }
 
-                if (string.IsNullOrEmpty(requestData.UserName) || string.IsNullOrEmpty(requestData.TokenSecret))
-                {
-                    return Ok(new ResponseErrorMessage
-                    {
-                        ResultCode = "1",
-                        ErrorMessage = "傳入參數錯誤！"
-                    });
-                }
-
-
+                return Ok();
             }
             catch (Exception ex)
             {
-
+                return Conflict();
             }
 
-            return Ok();
         }
     }
 }
