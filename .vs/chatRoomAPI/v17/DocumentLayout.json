@@ -1,26 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\",
+  "WorkspaceRootPath": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\sideproject\\chatroomapi\\chatroomapi\\controllers\\lineaccountlogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\controllers\\lineaccountlogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|c:\\users\\vanis\\desktop\\dev\\chatroomapi\\chatroomapi\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\sideproject\\chatroomapi\\chatroomapi\\databasesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\databasesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\sideproject\\chatroomapi\\chatroomapi\\model\\requestlineaccountlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\model\\requestlineaccountlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\sideproject\\chatroomapi\\chatroomapi\\model\\responseerrormessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\model\\responseerrormessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\sideproject\\chatroomapi\\chatroomapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|c:\\users\\vanis\\desktop\\dev\\chatroomapi\\chatroomapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|c:\\users\\vanis\\desktop\\dev\\chatroomapi\\chatroomapi\\databasesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\databasesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DatabaseSettings.cs",
-              "DocumentMoniker": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\DatabaseSettings.cs",
-              "RelativeDocumentMoniker": "chatRoomAPI\\DatabaseSettings.cs",
-              "ToolTip": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\DatabaseSettings.cs",
-              "RelativeToolTip": "chatRoomAPI\\DatabaseSettings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "chatRoomAPI\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAAKMAAAAAAAAAAAAAALAAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T09:44:08.517Z",
+              "WhenOpened": "2024-09-23T07:43:58.269Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\appsettings.json",
               "RelativeDocumentMoniker": "chatRoomAPI\\appsettings.json",
-              "ToolTip": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\appsettings.json",
               "RelativeToolTip": "chatRoomAPI\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-09-23T09:23:42.871Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ResponseErrorMessage.cs",
-              "DocumentMoniker": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Model\\ResponseErrorMessage.cs",
-              "RelativeDocumentMoniker": "chatRoomAPI\\Model\\ResponseErrorMessage.cs",
-              "ToolTip": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Model\\ResponseErrorMessage.cs",
-              "RelativeToolTip": "chatRoomAPI\\Model\\ResponseErrorMessage.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T07:56:47.006Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "RequestLineAccountLogin.cs",
-              "DocumentMoniker": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Model\\RequestLineAccountLogin.cs",
-              "RelativeDocumentMoniker": "chatRoomAPI\\Model\\RequestLineAccountLogin.cs",
-              "ToolTip": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Model\\RequestLineAccountLogin.cs",
-              "RelativeToolTip": "chatRoomAPI\\Model\\RequestLineAccountLogin.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Title": "DatabaseSettings.cs",
+              "DocumentMoniker": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\DatabaseSettings.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\DatabaseSettings.cs",
+              "ToolTip": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\DatabaseSettings.cs",
+              "RelativeToolTip": "chatRoomAPI\\DatabaseSettings.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T07:45:05.462Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LineAccountLoginController.cs",
-              "DocumentMoniker": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Controllers\\LineAccountLoginController.cs",
-              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\LineAccountLoginController.cs",
-              "ToolTip": "D:\\Neil\\Dev\\sideProject\\chatRoomAPI\\chatRoomAPI\\Controllers\\LineAccountLoginController.cs",
-              "RelativeToolTip": "chatRoomAPI\\Controllers\\LineAccountLoginController.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAxwBsAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T07:43:58.269Z",
+              "WhenOpened": "2024-09-23T09:44:08.517Z",
               "EditorCaption": ""
             }
           ]

@@ -1,9 +1,9 @@
 ﻿namespace chatRoomAPI.Model
 {
-    public class ResponseErrorMessage
+    public class ResponseSuccessMessage
     {
         public int resultCode { get; set; }
 
-        public string errorMessage { get; set; }
+        public string message { get; set; }
     }
 }
