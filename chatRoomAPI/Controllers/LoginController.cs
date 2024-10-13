@@ -29,7 +29,7 @@ namespace chatRoomAPI.Controllers
                 {
                     ResponseErrorMessage errorMessage = new ResponseErrorMessage()
                     {
-                        resultCode = 1,
+                        resultCode = "01",
                         errorMessage = "傳入參數為空！"
                     };
 
@@ -40,7 +40,7 @@ namespace chatRoomAPI.Controllers
                 {
                     ResponseErrorMessage errorMessage = new ResponseErrorMessage()
                     {
-                        resultCode = 1,
+                        resultCode = "01",
                         errorMessage = "登入類型參數錯誤！"
                     };
 
@@ -53,7 +53,7 @@ namespace chatRoomAPI.Controllers
                     {
                         ResponseErrorMessage errorMessage = new ResponseErrorMessage()
                         {
-                            resultCode = 1,
+                            resultCode = "01",
                             errorMessage = "帳號參數錯誤！"
                         };
 
@@ -64,7 +64,7 @@ namespace chatRoomAPI.Controllers
                     {
                         ResponseErrorMessage errorMessage = new ResponseErrorMessage()
                         {
-                            resultCode = 1,
+                            resultCode = "01",
                             errorMessage = "密碼參數錯誤！"
                         };
 
@@ -77,7 +77,7 @@ namespace chatRoomAPI.Controllers
                     {
                         ResponseErrorMessage errorMessage = new ResponseErrorMessage()
                         {
-                            resultCode = 1,
+                            resultCode = "01",
                             errorMessage = "ID 參數錯誤！"
                         };
 
@@ -85,8 +85,8 @@ namespace chatRoomAPI.Controllers
                     }
                 }
 
-                DatabaseSettings dbs = new DatabaseSettings(_configuration);
-                string connectionString = dbs.connectionString;
+                DatabaseSettings dbs = new DatabaseSettings(_configuration); //取得 appsetting.json 資料
+                string connectionString = dbs.connectionString; //取得連線字串
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -96,13 +96,13 @@ namespace chatRoomAPI.Controllers
                     {
                         string strSql = @"SELECT 0
                                           FROM USER_DATA
-                                          WHERE I_USED_ACCOUNT = @I_USED_ACCOUNT
-                                            AND I_USED_PASSWORD = @I_USED_PASSWORD";
+                                          WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT
+                                            AND S_USED_PASSWORD = @S_USED_PASSWORD";
 
                         using (SqlCommand command = new SqlCommand(strSql, connection))
                         {
-                            command.Parameters.Add("@I_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
-                            command.Parameters.Add("@I_USED_PASSWORD", SqlDbType.VarChar).Value = requestData.password;
+                            command.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
+                            command.Parameters.Add("@S_USED_PASSWORD", SqlDbType.VarChar).Value = requestData.password;
 
                             int result = Convert.ToInt32(command.ExecuteScalar());
 
@@ -110,7 +110,7 @@ namespace chatRoomAPI.Controllers
                             {
                                 ResponseErrorMessage errorMessage = new ResponseErrorMessage()
                                 {
-                                    resultCode = 1,
+                                    resultCode = "01",
                                     errorMessage = "帳號或密碼輸入錯誤！"
                                 };
 
@@ -118,51 +118,50 @@ namespace chatRoomAPI.Controllers
                             }
                         }
                     }
-                    else
+                    else if (requestData.loginType == 2) //使用第三方登入
                     {
                         string strSql = @"SELECT 0
                                           FROM USER_DATA
-                                          WHERE I_USED_ACCOUNT = @I_USED_ACCOUNT";
+                                          WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT";
 
                         using (SqlCommand command = new SqlCommand(strSql, connection))
                         {
-                            command.Parameters.Add("@I_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
-                            command.Parameters.Add("@I_USED_PASSWORD", SqlDbType.VarChar).Value = requestData.password;
+                            command.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
 
                             object result = command.ExecuteScalar();
 
                             if (result == null)
                             {
                                 string strSqlIrt = @"INSERT USER_DATA
-                                                       ([I_USED_ACCOUNT]
-                                                       ,[I_USED_PASSWORD]
-                                                       ,[I_USED_NICKNAME]
-                                                       ,[I_USED_PICTURE]
-                                                       ,[I_USED_BIRTHDATE]
+                                                       ([S_USED_ACCOUNT]
+                                                       ,[S_USED_PASSWORD]
+                                                       ,[S_USED_NICKNAME]
+                                                       ,[S_USED_PICTURE]
+                                                       ,[D_USED_BIRTHDATE]
                                                        ,[I_USED_SIGNUPTYPE]
                                                        ,[I_USED_STATUS]
-                                                       ,[I_USED_CREATEDATE])
+                                                       ,[D_USED_CREATEDATE])
                                                      VALUES
-                                                       (@I_USED_ACCOUNT
-                                                       ,@I_USED_PASSWORD
-                                                       ,@I_USED_NICKNAME
-                                                       ,@I_USED_PICTURE
-                                                       ,@I_USED_BIRTHDATE
+                                                       (@S_USED_ACCOUNT
+                                                       ,@S_USED_PASSWORD
+                                                       ,@S_USED_NICKNAME
+                                                       ,@S_USED_PICTURE
+                                                       ,@D_USED_BIRTHDATE
                                                        ,@I_USED_SIGNUPTYPE
                                                        ,@I_USED_STATUS
-                                                       ,@I_USED_CREATEDATE)";
+                                                       ,@D_USED_CREATEDATE)";
 
                                 using (SqlCommand commandIrt = new SqlCommand(strSqlIrt, connection))
                                 {
                                     commandIrt.Parameters.Clear();
-                                    commandIrt.Parameters.Add("@I_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
-                                    commandIrt.Parameters.Add("@I_USED_PASSWORD", SqlDbType.VarChar).Value = string.Empty;
-                                    commandIrt.Parameters.Add("@I_USED_NICKNAME", SqlDbType.VarChar).Value = requestData.name;
-                                    commandIrt.Parameters.Add("@I_USED_PICTURE", SqlDbType.VarChar).Value = DBNull.Value;
-                                    commandIrt.Parameters.Add("@I_USED_BIRTHDATE", SqlDbType.Date).Value = DBNull.Value;
+                                    commandIrt.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
+                                    commandIrt.Parameters.Add("@S_USED_PASSWORD", SqlDbType.VarChar).Value = string.Empty;
+                                    commandIrt.Parameters.Add("@S_USED_NICKNAME", SqlDbType.VarChar).Value = requestData.name;
+                                    commandIrt.Parameters.Add("@S_USED_PICTURE", SqlDbType.VarChar).Value = DBNull.Value;
+                                    commandIrt.Parameters.Add("@D_USED_BIRTHDATE", SqlDbType.Date).Value = DBNull.Value;
                                     commandIrt.Parameters.Add("@I_USED_SIGNUPTYPE", SqlDbType.Int).Value = 2;
                                     commandIrt.Parameters.Add("@I_USED_STATUS", SqlDbType.Int).Value = 1;
-                                    commandIrt.Parameters.Add("@I_USED_CREATEDATE", SqlDbType.DateTime).Value = createDate;
+                                    commandIrt.Parameters.Add("@D_USED_CREATEDATE", SqlDbType.DateTime).Value = createDate;
 
                                     int irtResult = commandIrt.ExecuteNonQuery();
 
@@ -170,7 +169,7 @@ namespace chatRoomAPI.Controllers
                                     {
                                         ResponseErrorMessage errorMessage = new ResponseErrorMessage()
                                         {
-                                            resultCode = 1,
+                                            resultCode = "01",
                                             errorMessage = "寫入資料庫錯誤，請聯繫開發人員！"
                                         };
 
@@ -184,7 +183,7 @@ namespace chatRoomAPI.Controllers
 
                 ResponseSuccessMessage successMessage = new ResponseSuccessMessage()
                 {
-                    resultCode = 10,
+                    resultCode = "10",
                     message = $"登入成功！ 歡迎使用者 {requestData.name}"
                 };
 
@@ -194,7 +193,7 @@ namespace chatRoomAPI.Controllers
             {
                 ResponseErrorMessage errorMessage = new ResponseErrorMessage()
                 {
-                    resultCode = 1,
+                    resultCode = "01",
                     errorMessage = $"login API 發生錯誤： {ex.Message}，請聯繫開發人員！"
                 };
 

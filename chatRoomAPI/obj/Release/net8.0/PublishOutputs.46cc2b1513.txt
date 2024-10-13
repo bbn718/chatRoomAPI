@@ -1,0 +1,17 @@
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\chatRoomAPI.exe
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\appsettings.json
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\chatRoomAPI.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\chatRoomAPI.deps.json
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\chatRoomAPI.runtimeconfig.json
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\chatRoomAPI.pdb
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\System.Data.SqlClient.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\runtimes\win-arm64\native\sni.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\runtimes\win-x64\native\sni.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\runtimes\win-x86\native\sni.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
