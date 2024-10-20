@@ -1,9 +1,14 @@
-﻿using chatRoomAPI.Model;
+﻿using chatRoomAPI.Configuration;
+using chatRoomAPI.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System.Data;
 using System.Data.SqlClient;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Xml.Linq;
 
 namespace chatRoomAPI.Controllers
@@ -87,6 +92,7 @@ namespace chatRoomAPI.Controllers
 
                 DatabaseSettings dbs = new DatabaseSettings(_configuration); //取得 appsetting.json 資料
                 string connectionString = dbs.connectionString; //取得連線字串
+                string token = "";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -94,7 +100,7 @@ namespace chatRoomAPI.Controllers
 
                     if (requestData.loginType == 1) //使用一般登入
                     {
-                        string strSql = @"SELECT 0
+                        string strSql = @"SELECT S_USED_ACCOUNT, S_USED_NICKNAME, S_USED_PICTURE
                                           FROM USER_DATA
                                           WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT
                                             AND S_USED_PASSWORD = @S_USED_PASSWORD";
@@ -116,11 +122,14 @@ namespace chatRoomAPI.Controllers
 
                                 return Ok(errorMessage);
                             }
+
+                            DataTable dtbResult = (DataTable)command.ExecuteScalar();
+                            token = GenerateJwt(dtbResult);
                         }
                     }
                     else if (requestData.loginType == 2) //使用第三方登入
                     {
-                        string strSql = @"SELECT 0
+                        string strSql = @"SELECT S_USED_ACCOUNT, S_USED_NICKNAME, S_USED_PICTURE
                                           FROM USER_DATA
                                           WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT";
 
@@ -130,7 +139,7 @@ namespace chatRoomAPI.Controllers
 
                             object result = command.ExecuteScalar();
 
-                            if (result == null)
+                            if (result == null) //資料庫無該使用者則註冊
                             {
                                 string strSqlIrt = @"INSERT USER_DATA
                                                        ([S_USED_ACCOUNT]
@@ -177,14 +186,20 @@ namespace chatRoomAPI.Controllers
                                     }
                                 }
                             }
+
+                            SqlDataAdapter sdaResult = new SqlDataAdapter(command);
+                            DataTable dtbResult = new DataTable();
+                            sdaResult.Fill(dtbResult);
+                            token = GenerateJwt(dtbResult);
                         }
                     }
                 }
 
-                ResponseSuccessMessage successMessage = new ResponseSuccessMessage()
+                ResponseLogin successMessage = new ResponseLogin()
                 {
                     resultCode = "10",
-                    message = $"登入成功！ 歡迎使用者 {requestData.name}"
+                    token = token,
+                    refreshToken = token
                 };
 
                 return Ok(successMessage);
@@ -194,10 +209,41 @@ namespace chatRoomAPI.Controllers
                 ResponseErrorMessage errorMessage = new ResponseErrorMessage()
                 {
                     resultCode = "01",
-                    errorMessage = $"login API 發生錯誤： {ex.Message}，請聯繫開發人員！"
+                    errorMessage = $"login Error： {ex.Message}，請聯繫開發人員！"
                 };
 
                 return Conflict(errorMessage);
+            }
+        }
+
+        private string GenerateJwt(DataTable dtbResult)
+        {
+            try
+            {
+                JwtSecurityTokenHandler jwtTokenHandler = new JwtSecurityTokenHandler();
+
+                Claim[] claims = new[]
+                {
+                    new Claim("account", dtbResult.Rows[0]["S_USED_ACCOUNT"]?.ToString() ?? ""),
+                    new Claim("nickname", dtbResult.Rows[0]["S_USED_NICKNAME"]?.ToString()  ?? ""),
+                    new Claim("pic", dtbResult.Rows[0]["S_USED_PICTURE"]?.ToString() ?? "")
+                };
+
+                IConfigurationSection jwtConfig = _configuration.GetSection("JwtConfig");
+                SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig["Secret"]));
+                SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                JwtSecurityToken token = new JwtSecurityToken(
+                    issuer: jwtConfig["Issuer"],
+                    audience: jwtConfig["Audience"],
+                    claims: claims,
+                    expires: DateTime.Now.AddMinutes(30),
+                    signingCredentials: creds);
+
+                return jwtTokenHandler.WriteToken(token);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GenerateJwt Error : " + ex.Message);
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace chatRoomAPI
+﻿namespace chatRoomAPI.Configuration
 {
     public class DatabaseSettings
     {

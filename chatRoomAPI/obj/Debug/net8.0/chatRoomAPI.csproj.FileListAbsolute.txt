@@ -70,3 +70,11 @@ C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\refint\chatR
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\chatRoomAPI.pdb
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\chatRoomAPI.genruntimeconfig.cache
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\ref\chatRoomAPI.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
