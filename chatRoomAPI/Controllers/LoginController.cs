@@ -1,5 +1,6 @@
 ﻿using chatRoomAPI.Configuration;
 using chatRoomAPI.Model;
+using chatRoomAPI.Model.Response;
 using chatRoomAPI.TokenService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -263,7 +264,7 @@ namespace chatRoomAPI.Controllers
                     }
 
                     string refreshToken = _tokenService.GenerateRefreshToken();
-                    string strSqlUpdRefreshToken = @"UPDATE user_data SET S_used_refreshToken = @S_used_refreshToken,
+                    string strSqlUpdRefreshToken = @"UPDATE USER_DATA SET S_used_refreshToken = @S_used_refreshToken,
                                                                           D_used_refreshTokenExpiryDate = @D_used_refreshTokenExpiryDate
                                                      WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT";
 

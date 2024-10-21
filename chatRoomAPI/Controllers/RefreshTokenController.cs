@@ -1,5 +1,6 @@
 ﻿using chatRoomAPI.Configuration;
 using chatRoomAPI.Model;
+using chatRoomAPI.Model.Response;
 using chatRoomAPI.TokenService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -29,7 +30,7 @@ namespace chatRoomAPI.Controllers
         }
 
         [HttpPost, Authorize]
-        public IActionResult RefreshToken(RequestRefreshToken requestData)
+        public IActionResult RefreshToken([FromBody] RequestRefreshToken requestData)
         {
             try
             {

@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "chatRoomAPI.Controllers.CreateChatRoomController",
+    "Method": "CreateChatRoom",
+    "RelativePath": "api/CreateChatRoom",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestData",
+        "Type": "chatRoomAPI.Model.Request.RequestCreateChatRoom",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "chatRoomAPI.Controllers.JoinChatRoomController",
+    "Method": "JoinChatRoom",
+    "RelativePath": "api/JoinChatRoom",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestData",
+        "Type": "chatRoomAPI.Model.Request.RequestJoinChatRoom",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "chatRoomAPI.Controllers.LoginController",
     "Method": "Login",
     "RelativePath": "api/Login",
@@ -10,6 +42,22 @@
       {
         "Name": "requestData",
         "Type": "chatRoomAPI.Model.RequestLogin",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "chatRoomAPI.Controllers.LogoutController",
+    "Method": "Logout",
+    "RelativePath": "api/Logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestData",
+        "Type": "chatRoomAPI.Model.Request.RequestLogout",
         "IsRequired": true
       }
     ],
@@ -32,24 +80,19 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "chatRoomAPI.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
+    "ContainingType": "chatRoomAPI.Controllers.RemoveChatRoomController",
+    "Method": "RemoveChatRoom",
+    "RelativePath": "api/RemoveChatRoom/{chatRoomCode}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[chatRoomAPI.WeatherForecast, chatRoomAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "chatRoomCode",
+        "Type": "System.String",
+        "IsRequired": true
       }
     ],
-    "EndpointName": "GetWeatherForecast"
+    "ReturnTypes": []
   }
 ]
