@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "chatRoomAPI.Controllers.LoginController",
-    "Method": "login",
+    "Method": "Login",
     "RelativePath": "api/Login",
     "HttpMethod": "POST",
     "IsController": true,
@@ -10,6 +10,22 @@
       {
         "Name": "requestData",
         "Type": "chatRoomAPI.Model.RequestLogin",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "chatRoomAPI.Controllers.RefreshTokenController",
+    "Method": "RefreshToken",
+    "RelativePath": "api/RefreshToken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestData",
+        "Type": "chatRoomAPI.Model.RequestRefreshToken",
         "IsRequired": true
       }
     ],

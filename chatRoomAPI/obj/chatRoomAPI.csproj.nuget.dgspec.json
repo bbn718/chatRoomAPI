@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj": {}
+    "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj": {
+    "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj",
+        "projectUniqueName": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj",
         "projectName": "chatRoomAPI",
-        "projectPath": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj",
-        "packagesPath": "C:\\Users\\vanis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\obj\\",
+        "projectPath": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj",
+        "packagesPath": "C:\\Users\\tp00294\\.nuget\\packages\\",
+        "outputPath": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\vanis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tp00294\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

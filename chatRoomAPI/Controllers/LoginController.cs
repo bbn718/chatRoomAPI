@@ -1,13 +1,17 @@
 ﻿using chatRoomAPI.Configuration;
 using chatRoomAPI.Model;
+using chatRoomAPI.TokenService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Data.SqlClient;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Xml.Linq;
 
@@ -19,74 +23,76 @@ namespace chatRoomAPI.Controllers
     {
         DateTime createDate = DateTime.Now;
         private readonly IConfiguration _configuration;
+        private readonly ITokenService _tokenService;
 
-        public LoginController(IConfiguration configuration)
+        public LoginController(IConfiguration configuration, ITokenService tokenService)
         {
             _configuration = configuration;
+            _tokenService = tokenService;
         }
 
         [HttpPost]
-        public IActionResult login([FromBody] RequestLogin requestData)
+        public IActionResult Login([FromBody] RequestLogin requestData)
         {
             try
             {
                 if (requestData == null)
                 {
-                    ResponseErrorMessage errorMessage = new ResponseErrorMessage()
+                    ResponseErrorMessage errorData = new ResponseErrorMessage()
                     {
                         resultCode = "01",
                         errorMessage = "傳入參數為空！"
                     };
 
-                    return Ok(errorMessage);
+                    return Ok(errorData);
                 }
 
                 if (requestData.loginType != 1 && requestData.loginType != 2)
                 {
-                    ResponseErrorMessage errorMessage = new ResponseErrorMessage()
+                    ResponseErrorMessage errorData = new ResponseErrorMessage()
                     {
                         resultCode = "01",
                         errorMessage = "登入類型參數錯誤！"
                     };
 
-                    return Ok(errorMessage);
+                    return Ok(errorData);
                 }
 
                 if (requestData.loginType == 1) //使用一般登入
                 {
                     if (string.IsNullOrEmpty(requestData.account))
                     {
-                        ResponseErrorMessage errorMessage = new ResponseErrorMessage()
+                        ResponseErrorMessage errorData = new ResponseErrorMessage()
                         {
                             resultCode = "01",
                             errorMessage = "帳號參數錯誤！"
                         };
 
-                        return Ok(errorMessage);
+                        return Ok(errorData);
                     }
 
                     if (string.IsNullOrEmpty(requestData.password))
                     {
-                        ResponseErrorMessage errorMessage = new ResponseErrorMessage()
+                        ResponseErrorMessage errorData = new ResponseErrorMessage()
                         {
                             resultCode = "01",
                             errorMessage = "密碼參數錯誤！"
                         };
 
-                        return Ok(errorMessage);
+                        return Ok(errorData);
                     }
                 }
                 else //使用第三方登入
                 {
                     if (string.IsNullOrEmpty(requestData.account))
                     {
-                        ResponseErrorMessage errorMessage = new ResponseErrorMessage()
+                        ResponseErrorMessage errorData = new ResponseErrorMessage()
                         {
                             resultCode = "01",
                             errorMessage = "ID 參數錯誤！"
                         };
 
-                        return Ok(errorMessage);
+                        return Ok(errorData);
                     }
                 }
 
@@ -114,17 +120,25 @@ namespace chatRoomAPI.Controllers
 
                             if (result == 0)
                             {
-                                ResponseErrorMessage errorMessage = new ResponseErrorMessage()
+                                ResponseErrorMessage errorData = new ResponseErrorMessage()
                                 {
                                     resultCode = "01",
                                     errorMessage = "帳號或密碼輸入錯誤！"
                                 };
 
-                                return Ok(errorMessage);
+                                return Ok(errorData);
                             }
 
                             DataTable dtbResult = (DataTable)command.ExecuteScalar();
-                            token = GenerateJwt(dtbResult);
+
+                            Claim[] claims = new[]
+                            {
+                                new Claim("account", dtbResult.Rows[0]["S_USED_ACCOUNT"]?.ToString() ?? ""),
+                                new Claim("nickname", dtbResult.Rows[0]["S_USED_NICKNAME"]?.ToString()  ?? ""),
+                                new Claim("pic", dtbResult.Rows[0]["S_USED_PICTURE"]?.ToString() ?? "")
+                            };
+
+                            token = _tokenService.GenerateJwt(claims);
                         }
                     }
                     else if (requestData.loginType == 2) //使用第三方登入
@@ -137,9 +151,12 @@ namespace chatRoomAPI.Controllers
                         {
                             command.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
 
-                            object result = command.ExecuteScalar();
+                            SqlDataAdapter sdaResult = new SqlDataAdapter(command);
+                            DataTable dtbResult = new DataTable();
 
-                            if (result == null) //資料庫無該使用者則註冊
+                            sdaResult.Fill(dtbResult);
+
+                            if (dtbResult.Rows.Count == 0) //資料庫無該使用者則註冊
                             {
                                 string strSqlIrt = @"INSERT USER_DATA
                                                        ([S_USED_ACCOUNT]
@@ -162,7 +179,6 @@ namespace chatRoomAPI.Controllers
 
                                 using (SqlCommand commandIrt = new SqlCommand(strSqlIrt, connection))
                                 {
-                                    commandIrt.Parameters.Clear();
                                     commandIrt.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
                                     commandIrt.Parameters.Add("@S_USED_PASSWORD", SqlDbType.VarChar).Value = string.Empty;
                                     commandIrt.Parameters.Add("@S_USED_NICKNAME", SqlDbType.VarChar).Value = requestData.name;
@@ -176,74 +192,120 @@ namespace chatRoomAPI.Controllers
 
                                     if (irtResult == 0)
                                     {
-                                        ResponseErrorMessage errorMessage = new ResponseErrorMessage()
+                                        ResponseErrorMessage errorData = new ResponseErrorMessage()
                                         {
                                             resultCode = "01",
                                             errorMessage = "寫入資料庫錯誤，請聯繫開發人員！"
                                         };
 
-                                        return Ok(errorMessage);
+                                        return Ok(errorData);
+                                    }
+                                }
+                            }
+                            else if (requestData.name != dtbResult.Rows[0]["S_USED_NICKNAME"].ToString()) //暱稱不同則更新
+                            {
+                                string strSqlUpd = @"UPDATE USER_DATA SET S_USED_NICKNAME = @S_USED_NICKNAME WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT";
+
+                                using (SqlCommand commandUpd = new SqlCommand(strSqlUpd, connection))
+                                {
+                                    commandUpd.Parameters.Add("@S_USED_NICKNAME", SqlDbType.VarChar).Value = requestData.name;
+                                    commandUpd.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
+
+                                    int updResult = commandUpd.ExecuteNonQuery();
+
+                                    if (updResult == 0)
+                                    {
+                                        ResponseErrorMessage errorData = new ResponseErrorMessage()
+                                        {
+                                            resultCode = "01",
+                                            errorMessage = "更新使用者名稱錯誤，請聯繫開發人員！"
+                                        };
+
+                                        return Ok(errorData);
+                                    }
+                                }
+                            }
+                            else if (requestData.pic != dtbResult.Rows[0]["S_USED_PICTURE"].ToString()) //大頭貼不同則更新
+                            {
+                                string strSqlUpd = @"UPDATE USER_DATA SET S_USED_PICTURE = @S_USED_PICTURE WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT";
+
+                                using (SqlCommand commandUpd = new SqlCommand(strSqlUpd, connection))
+                                {
+                                    commandUpd.Parameters.Add("@S_USED_PICTURE", SqlDbType.VarChar).Value = requestData.name;
+                                    commandUpd.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
+
+                                    int updResult = commandUpd.ExecuteNonQuery();
+
+                                    if (updResult == 0)
+                                    {
+                                        ResponseErrorMessage errorData = new ResponseErrorMessage()
+                                        {
+                                            resultCode = "01",
+                                            errorMessage = "更新大頭貼錯誤，請聯繫開發人員！"
+                                        };
+
+                                        return Ok(errorData);
                                     }
                                 }
                             }
 
-                            SqlDataAdapter sdaResult = new SqlDataAdapter(command);
-                            DataTable dtbResult = new DataTable();
-                            sdaResult.Fill(dtbResult);
-                            token = GenerateJwt(dtbResult);
+                            sdaResult.Fill(dtbResult); //重新獲取寫入or更新後之使用者資料
+
+                            Claim[] claims = new[]
+{
+                                new Claim("account", dtbResult.Rows[0]["S_USED_ACCOUNT"]?.ToString() ?? ""),
+                                new Claim("nickname", dtbResult.Rows[0]["S_USED_NICKNAME"]?.ToString()  ?? ""),
+                                new Claim("pic", dtbResult.Rows[0]["S_USED_PICTURE"]?.ToString() ?? "")
+                            };
+
+                            token = _tokenService.GenerateJwt(claims);
                         }
                     }
+
+                    string refreshToken = _tokenService.GenerateRefreshToken();
+                    string strSqlUpdRefreshToken = @"UPDATE user_data SET S_used_refreshToken = @S_used_refreshToken,
+                                                                          D_used_refreshTokenExpiryDate = @D_used_refreshTokenExpiryDate
+                                                     WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT";
+
+                    using (SqlCommand commandUpd = new SqlCommand(strSqlUpdRefreshToken, connection)) //更新使用者 refreshToken
+                    {
+                        commandUpd.Parameters.Add("@S_used_refreshToken", SqlDbType.VarChar).Value = refreshToken;
+                        commandUpd.Parameters.Add("@D_used_refreshTokenExpiryDate", SqlDbType.DateTime).Value = DateTime.Now.AddDays(Convert.ToDouble(_configuration.GetSection("JwtConfig")["RefreshTokenExpiryDay"]));
+                        commandUpd.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
+
+                        int updResult = commandUpd.ExecuteNonQuery();
+
+                        if (updResult == 0)
+                        {
+                            ResponseErrorMessage errorData = new ResponseErrorMessage()
+                            {
+                                resultCode = "01",
+                                errorMessage = "更新 RefreshToken 錯誤，請聯繫開發人員！"
+                            };
+
+                            return Ok(errorData);
+                        }
+                    }
+
+                    ResponseLogin responseData = new ResponseLogin()
+                    {
+                        resultCode = "10",
+                        token = token,
+                        refreshToken = refreshToken
+                    };
+
+                    return Ok(responseData);
                 }
-
-                ResponseLogin successMessage = new ResponseLogin()
-                {
-                    resultCode = "10",
-                    token = token,
-                    refreshToken = token
-                };
-
-                return Ok(successMessage);
             }
             catch (Exception ex)
             {
-                ResponseErrorMessage errorMessage = new ResponseErrorMessage()
+                ResponseErrorMessage errorData = new ResponseErrorMessage()
                 {
                     resultCode = "01",
-                    errorMessage = $"login Error： {ex.Message}，請聯繫開發人員！"
+                    errorMessage = $"Login Error： {ex.Message}，請聯繫開發人員！"
                 };
 
-                return Conflict(errorMessage);
-            }
-        }
-
-        private string GenerateJwt(DataTable dtbResult)
-        {
-            try
-            {
-                JwtSecurityTokenHandler jwtTokenHandler = new JwtSecurityTokenHandler();
-
-                Claim[] claims = new[]
-                {
-                    new Claim("account", dtbResult.Rows[0]["S_USED_ACCOUNT"]?.ToString() ?? ""),
-                    new Claim("nickname", dtbResult.Rows[0]["S_USED_NICKNAME"]?.ToString()  ?? ""),
-                    new Claim("pic", dtbResult.Rows[0]["S_USED_PICTURE"]?.ToString() ?? "")
-                };
-
-                IConfigurationSection jwtConfig = _configuration.GetSection("JwtConfig");
-                SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig["Secret"]));
-                SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-                JwtSecurityToken token = new JwtSecurityToken(
-                    issuer: jwtConfig["Issuer"],
-                    audience: jwtConfig["Audience"],
-                    claims: claims,
-                    expires: DateTime.Now.AddMinutes(30),
-                    signingCredentials: creds);
-
-                return jwtTokenHandler.WriteToken(token);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("GenerateJwt Error : " + ex.Message);
+                return Conflict(errorData);
             }
         }
     }
