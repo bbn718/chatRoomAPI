@@ -33,15 +33,13 @@ namespace chatRoomAPI.Controllers
                 {
                     connection.Open();
 
-                    string strSqlChk = @"SELECT 0 FROM user_data WHERE S_used_account = @S_used_account";
+                    string strSqlChk = @"SELECT 0 FROM USER_DATA WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT";
 
                     using (SqlCommand command = new SqlCommand(strSqlChk, connection))
                     {
-                        command.Parameters.Add("@S_used_account", SqlDbType.VarChar).Value = account;
+                        command.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = account;
 
-                        int result = command.ExecuteNonQuery();
-
-                        if (result == 0)
+                        if (command.ExecuteScalar() is null)
                         {
                             ResponseErrorMessage errorData = new ResponseErrorMessage()
                             {
@@ -53,26 +51,31 @@ namespace chatRoomAPI.Controllers
                         }
                     }
 
-                    string strSqlUpd = @"UPDATE user_data SET S_used_refreshToken = @S_used_refreshToken WHERE S_used_account = @S_used_account";
+                    #region 重設 refreshToken
+                    string strSqlUpd = @"UPDATE USER_DATA SET S_USED_REFRESHTOKEN = @S_USED_REFRESHTOKEN,
+                                                              D_USED_REFRESHTOKENEXPIRYDATE = @D_USED_REFRESHTOKENEXPIRYDATE
+                                         WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT";
 
                     using (SqlCommand command = new SqlCommand(strSqlUpd, connection))
                     {
-                        command.Parameters.Add("@S_used_refreshToken", SqlDbType.VarChar).Value = DBNull.Value;
-                        command.Parameters.Add("@S_used_account", SqlDbType.VarChar).Value = account;
+                        command.Parameters.Add("@S_USED_REFRESHTOKEN", SqlDbType.VarChar).Value = DBNull.Value;
+                        command.Parameters.Add("@D_USED_REFRESHTOKENEXPIRYDATE", SqlDbType.DateTime).Value = DBNull.Value;
+                        command.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = account;
 
                         int result = command.ExecuteNonQuery();
 
-                        if (result == 0)
+                        if (result <= 0)
                         {
                             ResponseErrorMessage errorData = new ResponseErrorMessage()
                             {
                                 resultCode = "01",
-                                errorMessage = "查無 refreshToken 可以更新，請聯繫開發人員！"
+                                errorMessage = "更新 refreshToken 發生錯誤，請聯繫開發人員！"
                             };
 
                             return Ok(errorData);
                         }
                     }
+                    #endregion
                 }
 
                 ResponseLogout responseData = new ResponseLogout()

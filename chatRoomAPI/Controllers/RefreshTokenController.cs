@@ -29,7 +29,7 @@ namespace chatRoomAPI.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost, Authorize]
+        [HttpPost]
         public IActionResult RefreshToken([FromBody] RequestRefreshToken requestData)
         {
             try
@@ -49,7 +49,7 @@ namespace chatRoomAPI.Controllers
                     connection.Open();
 
                     #region 檢查使用者 refreshToken 是否匹配、refreshTokenExpiryDate 是否過期
-                    string strSqlChk = @"SELECT S_used_refreshToken, S_used_refreshTokenExpiryDate FROM user_data WHERE S_used_account = @S_used_account";
+                    string strSqlChk = @"SELECT S_used_refreshToken, D_used_refreshTokenExpiryDate FROM user_data WHERE S_used_account = @S_used_account";
 
                     using (SqlCommand command = new SqlCommand(strSqlChk, connection))
                     {
@@ -60,7 +60,7 @@ namespace chatRoomAPI.Controllers
 
                         sdaResult.Fill(dtbResult);
 
-                        if (dtbResult.Rows.Count == 9)
+                        if (dtbResult.Rows.Count <= 0)
                         {
                             ResponseErrorMessage errorData = new ResponseErrorMessage()
                             {
@@ -73,7 +73,7 @@ namespace chatRoomAPI.Controllers
 
                         string DbRefreshToken = dtbResult.Rows[0]["S_used_refreshToken"].ToString();
 
-                        if (!DateTime.TryParse(dtbResult.Rows[0]["S_used_refreshToken"].ToString(), out DateTime DbRefreshTokenExpiryDate))
+                        if (!DateTime.TryParse(dtbResult.Rows[0]["D_used_refreshTokenExpiryDate"].ToString(), out DateTime DbRefreshTokenExpiryDate))
                             throw new Exception("DateTime 轉換錯誤，請聯繫開發人員！");
 
                         if (refreshToken != DbRefreshToken)
@@ -106,11 +106,11 @@ namespace chatRoomAPI.Controllers
                     using (SqlCommand command = new SqlCommand(strSqlUpd, connection))
                     {
                         command.Parameters.Add("@S_used_refreshToken", SqlDbType.VarChar).Value = newRefeshToken;
-                        command.Parameters.Add("@S_used_account", SqlDbType.VarChar).Value = username;
+                        command.Parameters.Add("@S_used_account", SqlDbType.VarChar).Value = account;
 
-                        int result = Convert.ToInt32(command.ExecuteScalar());
+                        int result = Convert.ToInt32(command.ExecuteNonQuery());
 
-                        if (result == 0)
+                        if (result <= 0)
                         {
                             ResponseErrorMessage errorData = new ResponseErrorMessage()
                             {

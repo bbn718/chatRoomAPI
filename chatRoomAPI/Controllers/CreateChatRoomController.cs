@@ -21,14 +21,16 @@ namespace chatRoomAPI.Controllers
             _configuration = configuration;
         }
 
-        [HttpGet, Authorize]
+        [HttpPost, Authorize]
         public IActionResult CreateChatRoom([FromBody] RequestCreateChatRoom requestData)
         {
             try
             {
                 string account = requestData.account;
+                string chatRoomPassword = requestData.chatRoomPassword;
                 string chatRoomName = requestData.chatRoomName;
                 string description = requestData.description ?? "";
+                DateTime dtCurrent = DateTime.Now;
 
                 DatabaseSettings dbs = new DatabaseSettings(_configuration);
                 string connectionString = dbs.connectionString;
@@ -40,18 +42,36 @@ namespace chatRoomAPI.Controllers
                 {
                     connection.Open();
 
-                    string strSqlIrt = @"INSERT CHAT_ROOM ()
-                                         VALUES (@, @, @)";
+                    string strSqlIrt = @"INSERT CHAT_ROOM
+                                            (S_CHAR_CODE,
+                                             S_CHAR_PASSWORD,
+                                             S_CHAR_NAME,
+                                             S_CHAR_CREATOR,
+                                             S_CHAR_DESCRIPTION,
+                                             D_CHAR_CREATEDATE,
+                                             I_CHAR_STATUS)
+                                         VALUES
+                                            (@S_CHAR_CODE,
+                                             @S_CHAR_PASSWORD,
+                                             @S_CHAR_NAME,
+                                             @S_CHAR_CREATOR,
+                                             @S_CHAR_DESCRIPTION,
+                                             @D_CHAR_CREATEDATE,
+                                             @I_CHAR_STATUS)";
 
                     using (SqlCommand command = new SqlCommand(strSqlIrt, connection))
                     {
-                        command.Parameters.Add("@", SqlDbType.VarChar).Value = account;
-                        command.Parameters.Add("@", SqlDbType.VarChar).Value = chatRoomName;
-                        command.Parameters.Add("@", SqlDbType.VarChar).Value = description;
+                        command.Parameters.Add("@S_CHAR_CODE", SqlDbType.VarChar).Value = chatRoomCode;
+                        command.Parameters.Add("@S_CHAR_PASSWORD", SqlDbType.VarChar).Value = chatRoomPassword;
+                        command.Parameters.Add("@S_CHAR_NAME", SqlDbType.VarChar).Value = chatRoomName;
+                        command.Parameters.Add("@S_CHAR_CREATOR", SqlDbType.VarChar).Value = account;
+                        command.Parameters.Add("@S_CHAR_DESCRIPTION", SqlDbType.VarChar).Value = description;
+                        command.Parameters.Add("@D_CHAR_CREATEDATE", SqlDbType.DateTime).Value = dtCurrent;
+                        command.Parameters.Add("@I_CHAR_STATUS", SqlDbType.TinyInt).Value = 1;
 
                         int result = command.ExecuteNonQuery();
 
-                        if (result == 0)
+                        if (result <= 0)
                         {
                             ResponseErrorMessage errorData = new ResponseErrorMessage()
                             {
@@ -67,7 +87,8 @@ namespace chatRoomAPI.Controllers
                 ResponseCreateChatRoom responseData = new ResponseCreateChatRoom()
                 {
                     resultCode = "10",
-                    chatRoomCode = chatRoomCode
+                    chatRoomCode = chatRoomCode,
+                    message = $"成功創建聊天室，代碼為[{chatRoomCode}]"
                 };
 
                 return Ok(responseData);

@@ -5,5 +5,7 @@
         public string resultCode { get; set; }
 
         public string chatRoomCode { get; set; }
+
+        public string message { get; set; }
     }
 }

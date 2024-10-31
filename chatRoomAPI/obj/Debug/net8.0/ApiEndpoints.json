@@ -3,7 +3,7 @@
     "ContainingType": "chatRoomAPI.Controllers.CreateChatRoomController",
     "Method": "CreateChatRoom",
     "RelativePath": "api/CreateChatRoom",
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [

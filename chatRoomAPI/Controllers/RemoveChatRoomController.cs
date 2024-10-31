@@ -43,15 +43,16 @@ namespace chatRoomAPI.Controllers
                 {
                     connection.Open();
 
-                    string strSqlDlt = "DELETE CHAT_ROOM WHERE ";
+                    string strSqlDlt = "UPDATE CHAT_ROOM SET I_CHAR_STATUS = @I_CHAR_STATUS WHERE S_CHAR_CODE = @S_CHAR_CODE";
 
                     using (SqlCommand command = new SqlCommand(strSqlDlt, connection))
                     {
-                        command.Parameters.Add("@", SqlDbType.VarChar).Value = chatRoomCode;
+                        command.Parameters.Add("@I_CHAR_STATUS", SqlDbType.TinyInt).Value = 0;
+                        command.Parameters.Add("@S_CHAR_CODE", SqlDbType.VarChar).Value = chatRoomCode;
 
                         int result = command.ExecuteNonQuery();
 
-                        if (result == 0)
+                        if (result <= 0)
                         {
                             ResponseErrorMessage errorData = new ResponseErrorMessage()
                             {
@@ -67,7 +68,7 @@ namespace chatRoomAPI.Controllers
                 ResponseRemoveChatRoom responseData = new ResponseRemoveChatRoom()
                 {
                     resultCode = "10",
-                    message = $"成功刪除聊天室: {chatRoomCode}！"
+                    message = $"成功刪除聊天室[{chatRoomCode}]！"
                 };
 
                 return Ok(responseData);

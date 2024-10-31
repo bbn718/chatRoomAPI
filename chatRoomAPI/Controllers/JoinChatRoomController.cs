@@ -25,7 +25,7 @@ namespace chatRoomAPI.Controllers
         {
             try
             {
-                if (string.IsNullOrEmpty(requestData.account) || string.IsNullOrEmpty(requestData.chatRoomCode))
+                if (string.IsNullOrEmpty(requestData.chatRoomCode) || string.IsNullOrEmpty(requestData.chatRoomPassword))
                 {
                     ResponseErrorMessage errorData = new ResponseErrorMessage()
                     {
@@ -43,16 +43,20 @@ namespace chatRoomAPI.Controllers
                 {
                     connection.Open();
 
-                    string strSqlChk = @"SELECT 0 FROM CHAT_ROOM WHERE ";
+                    string strSqlChk = @"SELECT 0 FROM CHAT_ROOM
+                                         WHERE S_CHAR_CODE = @S_CHAR_CODE 
+                                           AND S_CHAR_PASSWORD = @S_CHAR_PASSWORD
+                                           AND I_CHAR_STATUS = @I_CHAR_STATUS";
 
                     using (SqlCommand command = new SqlCommand(strSqlChk, connection))
                     {
-                        command.Parameters.Add("@", SqlDbType.VarChar).Value = requestData.account;
-                        command.Parameters.Add("@", SqlDbType.VarChar).Value = requestData.chatRoomCode;
+                        command.Parameters.Add("@S_CHAR_CODE", SqlDbType.VarChar).Value = requestData.chatRoomCode;
+                        command.Parameters.Add("@S_CHAR_PASSWORD", SqlDbType.VarChar).Value = requestData.chatRoomPassword;
+                        command.Parameters.Add("@I_CHAR_STATUS", SqlDbType.TinyInt).Value = 1;
 
-                        int result = command.ExecuteNonQuery();
+                        //int result = Convert.ToInt32(command.ExecuteScalar());
 
-                        if (result == 0)
+                        if (command.ExecuteScalar() is null)
                         {
                             ResponseErrorMessage errorData = new ResponseErrorMessage()
                             {
@@ -68,7 +72,7 @@ namespace chatRoomAPI.Controllers
                 ResponseJoinChatRoom responseData = new ResponseJoinChatRoom()
                 {
                     resultCode = "10",
-                    message = "登出成功！"
+                    message = $"成功加入聊天室[{requestData.chatRoomCode}]！"
                 };
 
                 return Ok(responseData);

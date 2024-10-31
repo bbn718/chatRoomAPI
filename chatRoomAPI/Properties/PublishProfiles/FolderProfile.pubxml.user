@@ -4,8 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Release\net8.0\publish\</_PublishTargetUrl>
-    <History>True|2024-10-01T11:58:10.0532433Z||;</History>
+    <_PublishTargetUrl>C:\IIS8087</_PublishTargetUrl>
+    <History>True|2024-10-24T15:12:10.6570201Z||;True|2024-10-24T22:22:09.2979378+08:00||;False|2024-10-24T22:21:26.6734145+08:00||;True|2024-10-01T19:58:10.0532433+08:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

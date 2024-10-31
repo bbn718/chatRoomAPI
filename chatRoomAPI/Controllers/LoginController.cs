@@ -32,7 +32,7 @@ namespace chatRoomAPI.Controllers
             _tokenService = tokenService;
         }
 
-        [HttpPost]
+        [HttpPost, AllowAnonymous]
         public IActionResult Login([FromBody] RequestLogin requestData)
         {
             try
@@ -117,9 +117,7 @@ namespace chatRoomAPI.Controllers
                             command.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
                             command.Parameters.Add("@S_USED_PASSWORD", SqlDbType.VarChar).Value = requestData.password;
 
-                            int result = Convert.ToInt32(command.ExecuteScalar());
-
-                            if (result == 0)
+                            if (command.ExecuteScalar() is null)
                             {
                                 ResponseErrorMessage errorData = new ResponseErrorMessage()
                                 {
@@ -191,7 +189,7 @@ namespace chatRoomAPI.Controllers
 
                                     int irtResult = commandIrt.ExecuteNonQuery();
 
-                                    if (irtResult == 0)
+                                    if (irtResult <= 0)
                                     {
                                         ResponseErrorMessage errorData = new ResponseErrorMessage()
                                         {
@@ -214,7 +212,7 @@ namespace chatRoomAPI.Controllers
 
                                     int updResult = commandUpd.ExecuteNonQuery();
 
-                                    if (updResult == 0)
+                                    if (updResult <= 0)
                                     {
                                         ResponseErrorMessage errorData = new ResponseErrorMessage()
                                         {
@@ -237,7 +235,7 @@ namespace chatRoomAPI.Controllers
 
                                     int updResult = commandUpd.ExecuteNonQuery();
 
-                                    if (updResult == 0)
+                                    if (updResult <= 0)
                                     {
                                         ResponseErrorMessage errorData = new ResponseErrorMessage()
                                         {
@@ -264,19 +262,19 @@ namespace chatRoomAPI.Controllers
                     }
 
                     string refreshToken = _tokenService.GenerateRefreshToken();
-                    string strSqlUpdRefreshToken = @"UPDATE USER_DATA SET S_used_refreshToken = @S_used_refreshToken,
-                                                                          D_used_refreshTokenExpiryDate = @D_used_refreshTokenExpiryDate
+                    string strSqlUpdRefreshToken = @"UPDATE USER_DATA SET S_USED_REFRESHTOKEN = @S_USED_REFRESHTOKEN,
+                                                                          D_USED_REFRESHTOKENEXPIRYDATE = @D_USED_REFRESHTOKENEXPIRYDATE
                                                      WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT";
 
                     using (SqlCommand commandUpd = new SqlCommand(strSqlUpdRefreshToken, connection)) //更新使用者 refreshToken
                     {
-                        commandUpd.Parameters.Add("@S_used_refreshToken", SqlDbType.VarChar).Value = refreshToken;
-                        commandUpd.Parameters.Add("@D_used_refreshTokenExpiryDate", SqlDbType.DateTime).Value = DateTime.Now.AddDays(Convert.ToDouble(_configuration.GetSection("JwtConfig")["RefreshTokenExpiryDay"]));
+                        commandUpd.Parameters.Add("@S_USED_REFRESHTOKEN", SqlDbType.VarChar).Value = refreshToken;
+                        commandUpd.Parameters.Add("@D_USED_REFRESHTOKENEXPIRYDATE", SqlDbType.DateTime).Value = DateTime.Now.AddDays(Convert.ToDouble(_configuration.GetSection("JwtConfig")["RefreshTokenExpiryDay"]));
                         commandUpd.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
 
                         int updResult = commandUpd.ExecuteNonQuery();
 
-                        if (updResult == 0)
+                        if (updResult <= 0)
                         {
                             ResponseErrorMessage errorData = new ResponseErrorMessage()
                             {
@@ -292,7 +290,8 @@ namespace chatRoomAPI.Controllers
                     {
                         resultCode = "10",
                         token = token,
-                        refreshToken = refreshToken
+                        refreshToken = refreshToken,
+                        message = $"登入成功，歡迎使用者[{requestData.name}]！"
                     };
 
                     return Ok(responseData);
