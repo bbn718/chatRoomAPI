@@ -124,11 +124,16 @@ namespace chatRoomAPI.Controllers
                 }
                 #endregion
 
+                ResponseRefreshTokenData data = new ResponseRefreshTokenData()
+                {
+                    newJwt = newJwt,
+                    newRefreshToken = newRefeshToken
+                };
+
                 ResponseRefreshToken responseData = new ResponseRefreshToken
                 {
                     resultCode = "10",
-                    newJwt = newJwt,
-                    newRefreshToken = newRefeshToken
+                    data = data
                 };
 
                 return Ok(responseData);

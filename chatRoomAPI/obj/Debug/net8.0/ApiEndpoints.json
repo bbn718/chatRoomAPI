@@ -94,5 +94,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "chatRoomAPI.Controllers.WebSocketController",
+    "Method": "Get",
+    "RelativePath": "WebSocket/{chatRoomCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "chatRoomCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "account",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

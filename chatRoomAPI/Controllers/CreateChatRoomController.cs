@@ -4,9 +4,13 @@ using chatRoomAPI.Model.Response;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Reflection;
+using System.Text.Json.Nodes;
+using System.Text.Json;
 
 namespace chatRoomAPI.Controllers
 {
@@ -84,10 +88,17 @@ namespace chatRoomAPI.Controllers
                     }
                 }
 
+                ResponseCreateChatRoomData data = new ResponseCreateChatRoomData()
+                {
+                    chatRoomCode = chatRoomCode
+                };
+
+                string strData = JsonConvert.SerializeObject(data);
+
                 ResponseCreateChatRoom responseData = new ResponseCreateChatRoom()
                 {
                     resultCode = "10",
-                    chatRoomCode = chatRoomCode,
+                    data = data,
                     message = $"成功創建聊天室，代碼為[{chatRoomCode}]"
                 };
 

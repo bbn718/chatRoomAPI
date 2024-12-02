@@ -14,15 +14,30 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("Bearer",
-    new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "JWT Authorization"
-    });
+        new OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            Type = SecuritySchemeType.Http,
+            Scheme = "Bearer",
+            BearerFormat = "JWT",
+            In = ParameterLocation.Header,
+            Description = "JWT Authorization"
+        });
+    options.AddSecurityRequirement(
+        new OpenApiSecurityRequirement
+        {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    new string[] {}
+                }
+        });
 });
 
 // 設定 JWT 認證
@@ -45,7 +60,19 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.Services.AddAuthentication();   
+
 builder.Services.AddTransient<ITokenService, TokenService>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // 允許的前端域名
+              .AllowAnyHeader()                      // 允許所有的 headers
+              .AllowAnyMethod();                     // 允許所有 HTTP 方法 (GET, POST, etc.)
+    });
+});
 
 var app = builder.Build();
 
@@ -56,11 +83,21 @@ var app = builder.Build();
 //    app.UseSwaggerUI();
 //}
 
+var webSocketOptions = new WebSocketOptions
+{
+    KeepAliveInterval = TimeSpan.FromMinutes(2) // 設定保持連線的時間間隔
+};
+
+app.UseCors("AllowSpecificOrigin");
+
+app.UseWebSockets(webSocketOptions);
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

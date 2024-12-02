@@ -13,6 +13,7 @@ C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

@@ -181,7 +181,7 @@ namespace chatRoomAPI.Controllers
                                     commandIrt.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
                                     commandIrt.Parameters.Add("@S_USED_PASSWORD", SqlDbType.VarChar).Value = string.Empty;
                                     commandIrt.Parameters.Add("@S_USED_NICKNAME", SqlDbType.VarChar).Value = requestData.name;
-                                    commandIrt.Parameters.Add("@S_USED_PICTURE", SqlDbType.VarChar).Value = DBNull.Value;
+                                    commandIrt.Parameters.Add("@S_USED_PICTURE", SqlDbType.VarChar).Value = requestData.pic;
                                     commandIrt.Parameters.Add("@D_USED_BIRTHDATE", SqlDbType.Date).Value = DBNull.Value;
                                     commandIrt.Parameters.Add("@I_USED_SIGNUPTYPE", SqlDbType.Int).Value = 2;
                                     commandIrt.Parameters.Add("@I_USED_STATUS", SqlDbType.Int).Value = 1;
@@ -230,7 +230,7 @@ namespace chatRoomAPI.Controllers
 
                                 using (SqlCommand commandUpd = new SqlCommand(strSqlUpd, connection))
                                 {
-                                    commandUpd.Parameters.Add("@S_USED_PICTURE", SqlDbType.VarChar).Value = requestData.name;
+                                    commandUpd.Parameters.Add("@S_USED_PICTURE", SqlDbType.VarChar).Value = requestData.pic;
                                     commandUpd.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
 
                                     int updResult = commandUpd.ExecuteNonQuery();
@@ -251,7 +251,7 @@ namespace chatRoomAPI.Controllers
                             sdaResult.Fill(dtbResult); //重新獲取寫入or更新後之使用者資料
 
                             Claim[] claims = new[]
-{
+                            {
                                 new Claim("account", dtbResult.Rows[0]["S_USED_ACCOUNT"]?.ToString() ?? ""),
                                 new Claim("nickname", dtbResult.Rows[0]["S_USED_NICKNAME"]?.ToString()  ?? ""),
                                 new Claim("pic", dtbResult.Rows[0]["S_USED_PICTURE"]?.ToString() ?? "")
@@ -286,11 +286,16 @@ namespace chatRoomAPI.Controllers
                         }
                     }
 
+                    ResponseLoginData data = new ResponseLoginData()
+                    {
+                        token = token,
+                        refreshToken = refreshToken
+                    };
+
                     ResponseLogin responseData = new ResponseLogin()
                     {
                         resultCode = "10",
-                        token = token,
-                        refreshToken = refreshToken,
+                        data = data,
                         message = $"登入成功，歡迎使用者[{requestData.name}]！"
                     };
 

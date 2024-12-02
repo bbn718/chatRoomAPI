@@ -125,3 +125,4 @@ D:\Neil\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\refint\chatRoomAPI.dll
 D:\Neil\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\chatRoomAPI.pdb
 D:\Neil\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\chatRoomAPI.genruntimeconfig.cache
 D:\Neil\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\ref\chatRoomAPI.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
