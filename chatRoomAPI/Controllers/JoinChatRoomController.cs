@@ -37,9 +37,9 @@ namespace chatRoomAPI.Controllers
                 }
 
                 DatabaseSettings dbs = new DatabaseSettings(_configuration);
-                string connetionString = dbs.connectionString;
+                string connectionString = dbs.connectionString;
 
-                using (SqlConnection connection = new SqlConnection(connetionString))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 

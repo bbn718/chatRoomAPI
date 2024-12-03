@@ -20,7 +20,7 @@ namespace chatRoomAPI.Controllers
         private static ConcurrentDictionary<string, List<string>> _rooms = new ConcurrentDictionary<string, List<string>>();
 
         [HttpGet("{chatRoomCode}")]
-        public async Task Get(string chatRoomCode, [FromQuery] string account)
+        public async Task Get(string chatRoomCode, [FromQuery]string account)
         {
             try
             {
@@ -38,6 +38,7 @@ namespace chatRoomAPI.Controllers
                 }
 
                 var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
+
                 _clients.TryAdd(account, webSocket);
 
                 // 加入指定房間
@@ -59,6 +60,7 @@ namespace chatRoomAPI.Controllers
                 };
 
                 Response.StatusCode = StatusCodes.Status409Conflict;
+
                 await Response.WriteAsJsonAsync(errorData);
             }
         }

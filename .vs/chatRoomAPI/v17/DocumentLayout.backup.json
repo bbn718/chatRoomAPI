@@ -1,10 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\",
+  "WorkspaceRootPath": "D:\\Neil\\Dev\\chatRoomAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|c:\\users\\vanis\\desktop\\dev\\chatroomapi\\chatroomapi\\controllers\\websocketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\chatroomapi\\chatroomapi\\controllers\\getchatroominfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\controllers\\getchatroominfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\chatroomapi\\chatroomapi\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\chatroomapi\\chatroomapi\\controllers\\joinchatroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\controllers\\joinchatroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\chatroomapi\\chatroomapi\\controllers\\websocketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\controllers\\websocketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\chatroomapi\\chatroomapi\\model\\websocket\\requestgetchatroomdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\model\\websocket\\requestgetchatroomdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|d:\\neil\\dev\\chatroomapi\\chatroomapi\\model\\websocket\\responsegetchatroomdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\model\\websocket\\responsegetchatroomdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +39,80 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WebSocketController.cs",
-              "DocumentMoniker": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\WebSocketController.cs",
-              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\WebSocketController.cs",
-              "ToolTip": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\WebSocketController.cs",
-              "RelativeToolTip": "chatRoomAPI\\Controllers\\WebSocketController.cs",
-              "ViewState": "AgIAAF8AAAAAAAAAAAASwH4AAAAwAAAAAAAAAA==",
+              "Title": "GetChatRoomInfoController.cs",
+              "DocumentMoniker": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\GetChatRoomInfoController.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\GetChatRoomInfoController.cs",
+              "ToolTip": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\GetChatRoomInfoController.cs*",
+              "RelativeToolTip": "chatRoomAPI\\Controllers\\GetChatRoomInfoController.cs*",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAwBYAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T08:21:40.546Z",
+              "WhenOpened": "2024-12-03T08:37:12.207Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\LoginController.cs",
+              "ToolTip": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "chatRoomAPI\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAACkAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T08:38:49.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "JoinChatRoomController.cs",
+              "DocumentMoniker": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\JoinChatRoomController.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\JoinChatRoomController.cs",
+              "ToolTip": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\JoinChatRoomController.cs",
+              "RelativeToolTip": "chatRoomAPI\\Controllers\\JoinChatRoomController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCYAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T08:50:40.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WebSocketController.cs",
+              "DocumentMoniker": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\WebSocketController.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\WebSocketController.cs",
+              "ToolTip": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\WebSocketController.cs",
+              "RelativeToolTip": "chatRoomAPI\\Controllers\\WebSocketController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T08:37:02.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RequestGetChatRoomData.cs",
+              "DocumentMoniker": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Model\\WebSocket\\RequestGetChatRoomData.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Model\\WebSocket\\RequestGetChatRoomData.cs",
+              "ToolTip": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Model\\WebSocket\\RequestGetChatRoomData.cs",
+              "RelativeToolTip": "chatRoomAPI\\Model\\WebSocket\\RequestGetChatRoomData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T06:08:52.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ResponseGetChatRoomData.cs",
+              "DocumentMoniker": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Model\\WebSocket\\ResponseGetChatRoomData.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Model\\WebSocket\\ResponseGetChatRoomData.cs",
+              "ToolTip": "D:\\Neil\\Dev\\chatRoomAPI\\chatRoomAPI\\Model\\WebSocket\\ResponseGetChatRoomData.cs",
+              "RelativeToolTip": "chatRoomAPI\\Model\\WebSocket\\ResponseGetChatRoomData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T06:09:21.805Z",
               "EditorCaption": ""
             }
           ]
