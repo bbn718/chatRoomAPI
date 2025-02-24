@@ -4,7 +4,7 @@
     {
         public string resultCode { get; set; }
 
-        public ResponseGetChatRoomInfoData data { get; set; }
+        public ResponseGetChatRoomInfoData? data { get; set; }
 
         public string message { get; set; }
     }
@@ -15,7 +15,7 @@
 
         public string chatRoomName { get; set; }
 
-        public chatRoomUsersHistoryData historyData { get; set; }
+        public List<chatRoomUsersHistoryData> historyData { get; set; }
     }
 
     public class chatRoomUsersHistoryData
@@ -24,7 +24,7 @@
 
         public string userPic { get; set; }
 
-        public string message { get; set; }
+        public string historyMessage { get; set; }
 
         public DateTime timestamp { get; set; }
     }

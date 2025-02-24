@@ -7,5 +7,7 @@
         public string account { get; set; }
 
         public string message { get; set; }
+
+        public DateTime timestamp { get; set; }
     }
 }

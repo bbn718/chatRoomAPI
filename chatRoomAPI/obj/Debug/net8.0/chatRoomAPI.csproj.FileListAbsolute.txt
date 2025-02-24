@@ -127,3 +127,7 @@ D:\Neil\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\chatRoomAPI.genruntimeconfi
 D:\Neil\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\ref\chatRoomAPI.dll
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\Neil\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\chatRoomAPI.staticwebassets.endpoints.json
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\staticwebassets\msbuild.chatRoomAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

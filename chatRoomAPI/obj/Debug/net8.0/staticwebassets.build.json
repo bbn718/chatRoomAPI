@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "GD7lDPW5MIxhbhT1ffK7JUGlzSgmqxTjg3Aa+dRtMjA=",
+  "Hash": "guxwPgCDPKSu9yB/modVrdWozJnTYP2gZqXUk85QCRk=",
   "Source": "chatRoomAPI",
   "BasePath": "_content/chatRoomAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

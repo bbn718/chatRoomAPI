@@ -261,36 +261,33 @@ namespace chatRoomAPI.Controllers
                         }
                     }
 
-                    string refreshToken = _tokenService.GenerateRefreshToken();
-                    string strSqlUpdRefreshToken = @"UPDATE USER_DATA SET S_USED_REFRESHTOKEN = @S_USED_REFRESHTOKEN,
-                                                                          D_USED_REFRESHTOKENEXPIRYDATE = @D_USED_REFRESHTOKENEXPIRYDATE
-                                                     WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT";
+                    ////20250215 Neil 調整不需要由資料庫管理 RefreshToken
+                    //string refreshToken = _tokenService.GenerateRefreshToken();
+                    //string strSqlUpdRefreshToken = @"UPDATE USER_DATA SET S_USED_REFRESHTOKEN = @S_USED_REFRESHTOKEN,
+                    //                                                      D_USED_REFRESHTOKENEXPIRYDATE = @D_USED_REFRESHTOKENEXPIRYDATE
+                    //                                 WHERE S_USED_ACCOUNT = @S_USED_ACCOUNT";
 
-                    using (SqlCommand commandUpd = new SqlCommand(strSqlUpdRefreshToken, connection)) //更新使用者 refreshToken
-                    {
-                        commandUpd.Parameters.Add("@S_USED_REFRESHTOKEN", SqlDbType.VarChar).Value = refreshToken;
-                        commandUpd.Parameters.Add("@D_USED_REFRESHTOKENEXPIRYDATE", SqlDbType.DateTime).Value = DateTime.Now.AddDays(Convert.ToDouble(_configuration.GetSection("JwtConfig")["RefreshTokenExpiryDay"]));
-                        commandUpd.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
+                    //using (SqlCommand commandUpd = new SqlCommand(strSqlUpdRefreshToken, connection)) //更新使用者 refreshToken
+                    //{
+                    //    commandUpd.Parameters.Add("@S_USED_REFRESHTOKEN", SqlDbType.VarChar).Value = refreshToken;
+                    //    commandUpd.Parameters.Add("@D_USED_REFRESHTOKENEXPIRYDATE", SqlDbType.DateTime).Value = DateTime.Now.AddDays(Convert.ToDouble(_configuration.GetSection("JwtConfig")["RefreshTokenExpiryDay"]));
+                    //    commandUpd.Parameters.Add("@S_USED_ACCOUNT", SqlDbType.VarChar).Value = requestData.account;
 
-                        int updResult = commandUpd.ExecuteNonQuery();
+                    //    int updResult = commandUpd.ExecuteNonQuery();
 
-                        if (updResult <= 0)
-                        {
-                            ResponseErrorMessage errorData = new ResponseErrorMessage()
-                            {
-                                resultCode = "01",
-                                errorMessage = "更新 RefreshToken 錯誤，請聯繫開發人員！"
-                            };
+                    //    if (updResult <= 0)
+                    //    {
+                    //        ResponseErrorMessage errorData = new ResponseErrorMessage()
+                    //        {
+                    //            resultCode = "01",
+                    //            errorMessage = "更新 RefreshToken 錯誤，請聯繫開發人員！"
+                    //        };
 
-                            return Ok(errorData);
-                        }
-                    }
+                    //        return Ok(errorData);
+                    //    }
+                    //}
 
-                    ResponseLoginData data = new ResponseLoginData()
-                    {
-                        token = token,
-                        refreshToken = refreshToken
-                    };
+                    ResponseLoginData data = new ResponseLoginData(){ token = token };
 
                     ResponseLogin responseData = new ResponseLogin()
                     {

@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "chatRoomAPI.Controllers.Back_Side.AdminLoginController",
+    "Method": "AdminLogin",
+    "RelativePath": "api/AdminLogin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestData",
+        "Type": "chatRoomAPI.Model.Back_Side.Request.RequestAdminLogin",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "chatRoomAPI.Controllers.CreateChatRoomController",
     "Method": "CreateChatRoom",
     "RelativePath": "api/CreateChatRoom",
@@ -10,6 +26,32 @@
       {
         "Name": "requestData",
         "Type": "chatRoomAPI.Model.Request.RequestCreateChatRoom",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "chatRoomAPI.Controllers.Back_Side.GetAdminGroupDataController",
+    "Method": "GetAdminGroupData",
+    "RelativePath": "api/GetAdminGroupData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "chatRoomAPI.Controllers.Back_Side.GetAuthenticationController",
+    "Method": "GetAuthentication",
+    "RelativePath": "api/GetAuthentication",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestData",
+        "Type": "chatRoomAPI.Model.Back_Side.Request.RequestGetAuthentication",
         "IsRequired": true
       }
     ],

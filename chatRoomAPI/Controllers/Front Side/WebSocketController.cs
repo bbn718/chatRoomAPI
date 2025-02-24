@@ -20,7 +20,7 @@ namespace chatRoomAPI.Controllers
         private static ConcurrentDictionary<string, List<string>> _rooms = new ConcurrentDictionary<string, List<string>>();
 
         [HttpGet("{chatRoomCode}")]
-        public async Task Get(string chatRoomCode, [FromQuery]string account)
+        public async Task Get(string chatRoomCode, [FromQuery] string account)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace chatRoomAPI.Controllers
         private async Task HandleWebSocketConnection(WebSocket webSocket, string account, string chatRoomCode)
         {
             var buffer = new byte[1024 * 4];
-            WebSocketReceiveResult result;
+            WebSocketReceiveResult? result = null;
 
             try
             {
@@ -86,8 +86,8 @@ namespace chatRoomAPI.Controllers
                     if (result.MessageType == WebSocketMessageType.Close)
                         break;
 
-                    var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                    var jsonMessage = JsonConvert.DeserializeObject<RequestWebSocket>(message);
+                    string message = Encoding.UTF8.GetString(buffer, 0, result.Count);
+                    RequestWebSocket? jsonMessage = JsonConvert.DeserializeObject<RequestWebSocket>(message);
 
                     if (jsonMessage == null)
                         continue;
@@ -96,6 +96,11 @@ namespace chatRoomAPI.Controllers
                     await SendMessageToRoom(jsonMessage);
                 }
             }
+            catch (Exception ex)
+            {
+                _clients.TryRemove(account, out _);
+                await webSocket.CloseAsync(WebSocketCloseStatus.InternalServerError, $"Error: {ex.Message}", CancellationToken.None);
+            }
             finally
             {
                 _clients.TryRemove(account, out _);
@@ -103,14 +108,16 @@ namespace chatRoomAPI.Controllers
                 if (_rooms.TryGetValue(chatRoomCode, out var users))
                 {
                     users.Remove(account);
+
                     if (users.Count == 0)
-                    {
                         _rooms.TryRemove(chatRoomCode, out _);
-                    }
+                }
+
+                if (result != null)
+                {
+                    await webSocket.CloseAsync(result.CloseStatus.GetValueOrDefault(), result.CloseStatusDescription, CancellationToken.None);
                 }
             }
-
-            await webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, CancellationToken.None);
         }
 
         /// <summary>
@@ -122,27 +129,61 @@ namespace chatRoomAPI.Controllers
         /// <returns></returns>
         private async Task SendMessageToRoom(RequestWebSocket jsonMessage)
         {
-            if (_rooms.TryGetValue(jsonMessage.chatRoomCode, out var users))
+            try
             {
-                ResponseWebSocket response = new ResponseWebSocket
-                {
-                    chatRoomCode = jsonMessage.chatRoomCode,
-                    senderId = jsonMessage.account,
-                    message = jsonMessage.message
-                };
 
-                var jsonResponse = JsonConvert.SerializeObject(response);
-                var bytesToSend = Encoding.UTF8.GetBytes(jsonResponse);
-
-                foreach (var user in users)
+                if (_rooms.TryGetValue(jsonMessage.chatRoomCode, out var users))
                 {
-                    if (_clients.TryGetValue(user, out var socket))
+                    ResponseWebSocket response = new ResponseWebSocket
                     {
-                        await socket.SendAsync(new ArraySegment<byte>(bytesToSend), WebSocketMessageType.Text, true, CancellationToken.None);
+                        chatRoomCode = jsonMessage.chatRoomCode,
+                        senderId = jsonMessage.account,
+                        message = jsonMessage.message
+                    };
+
+                    string jsonResponse = JsonConvert.SerializeObject(response);
+                    byte[] bytesToSend = Encoding.UTF8.GetBytes(jsonResponse);
+
+                    foreach (var user in users)
+                    {
+                        if (_clients.TryGetValue(user, out var socket))
+                        {
+                            await socket.SendAsync(new ArraySegment<byte>(bytesToSend), WebSocketMessageType.Text, true, CancellationToken.None);
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+
+            }
         }
 
+        private void InsertChai()
+        {
+            string strSql = @"INSERT CHATROOM_ITEM
+                               (S_CHAI_CHARCODE,
+                                S_CHAI_CHARNAME,
+                                S_CHAI_USEDNICKNAME,
+                                S_CHAI_USEDPICTURE,
+                                S_CHAI_HISTMESSAGE,
+                                D_CHAI_TIMESTAMP)
+                              VALUES
+                               (@S_CHAI_CHARCODE,
+                                @S_CHAI_CHARNAME,
+                                @S_CHAI_USEDNICKNAME,
+                                @S_CHAI_USEDPICTURE,
+                                @S_CHAI_HISTMESSAGE,
+                                @D_CHAI_TIMESTAMP)";
+
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(strSql, ex);
+            }
+        }
     }
 }
