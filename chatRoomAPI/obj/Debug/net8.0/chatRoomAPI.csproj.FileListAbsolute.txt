@@ -64,7 +64,6 @@ C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\staticwebass
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.chatRoomAPI.props
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\scopedcss\bundle\chatRoomAPI.styles.css
-C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\chatRoom.502506EC.Up2Date
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\chatRoomAPI.dll
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\refint\chatRoomAPI.dll
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\chatRoomAPI.pdb
@@ -131,3 +130,4 @@ C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\bin\Debug\net8.0\chatRoomAPI.
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\staticwebassets\msbuild.chatRoomAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\vanis\Desktop\Dev\chatRoomAPI\chatRoomAPI\obj\Debug\net8.0\chatRoom.502506EC.Up2Date

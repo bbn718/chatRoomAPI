@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "twb/pEb0O3s=",
+  "dgSpecHash": "F7J3Z9+xx1M=",
   "success": true,
-  "projectFilePath": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj",
+  "projectFilePath": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\ChatRoomAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vanis\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.10\\microsoft.aspnetcore.authentication.jwtbearer.8.0.10.nupkg.sha512",
     "C:\\Users\\vanis\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

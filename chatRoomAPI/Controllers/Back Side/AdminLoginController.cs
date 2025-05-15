@@ -1,8 +1,8 @@
-﻿using chatRoomAPI.Configuration;
-using chatRoomAPI.Model;
-using chatRoomAPI.Model.Back_Side.Request;
-using chatRoomAPI.Model.Response;
-using chatRoomAPI.TokenService;
+﻿using ChatRoomAPI.Configuration;
+using ChatRoomAPI.Model;
+using ChatRoomAPI.Model.Back_Side.Request;
+using ChatRoomAPI.Model.Response;
+using ChatRoomAPI.TokenService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +11,10 @@ using System.Data.SqlClient;
 using System.Security.Claims;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace chatRoomAPI.Controllers.Back_Side
+namespace ChatRoomAPI.Controllers.Back_Side
 {
-    [Route("api/[controller]")]
+    [ApiExplorerSettings(GroupName = "back")]
+    [Route("api/back/[controller]")]
     [ApiController]
     public class AdminLoginController : ControllerBase
     {
@@ -29,15 +30,11 @@ namespace chatRoomAPI.Controllers.Back_Side
         [HttpPost, AllowAnonymous]
         public IActionResult AdminLogin([FromBody] RequestAdminLogin requestData)
         {
-            string strSqlChkAdminAccount = @"SELECT I_ADMD_ERRNUM FROM ADMIN_DATA
-                                                 WHERE S_ADMD_ACCOUNT = @S_ADMD_ACCOUNT";
-            string strSqlGetAdminData = @"SELECT S_ADMD_ID, S_ADMD_NAME, S_ADMD_ACCOUNT
-                                                  FROM ADMIN_DATA
-                                                  WHERE S_ADMD_ACCOUNT = @S_ADMD_ACCOUNT
-                                                    AND S_ADMD_PASSWORD = @S_ADMD_PASSWORD";
-            string strSqlUpdAdmin = @"UPDATE ADMIN_DATA
-                                          SET I_ADMD_ERRNUM = @I_ADMD_ERRNUM
-                                          WHERE S_ADMD_ACCOUNT = @S_ADMD_ACCOUNT";
+            string strSqlChkAdminAccount = @"SELECT I_ADMD_ERRNUM FROM ADMIN_DATA WHERE S_ADMD_ACCOUNT = @S_ADMD_ACCOUNT";
+            string strSqlGetAdminData = @"SELECT S_ADMD_ID, S_ADMD_NAME, S_ADMD_ACCOUNT FROM ADMIN_DATA
+                                          WHERE S_ADMD_ACCOUNT = @S_ADMD_ACCOUNT AND S_ADMD_PASSWORD = @S_ADMD_PASSWORD";
+            string strSqlUpdAdmin = @"UPDATE ADMIN_DATA SET I_ADMD_ERRNUM = @I_ADMD_ERRNUM
+                                      WHERE S_ADMD_ACCOUNT = @S_ADMD_ACCOUNT";
             short errnum = 0;
             string token = "";
 

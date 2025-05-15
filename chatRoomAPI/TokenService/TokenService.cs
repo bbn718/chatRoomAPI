@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace chatRoomAPI.TokenService
+namespace ChatRoomAPI.TokenService
 {
     public class TokenService : ITokenService
     {

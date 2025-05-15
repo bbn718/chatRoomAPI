@@ -1,4 +1,4 @@
-﻿namespace chatRoomAPI.Model
+﻿namespace ChatRoomAPI.Model
 {
     public class RequestLogin
     {

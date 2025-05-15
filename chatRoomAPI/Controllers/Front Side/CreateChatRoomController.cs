@@ -1,6 +1,6 @@
-﻿using chatRoomAPI.Configuration;
-using chatRoomAPI.Model.Request;
-using chatRoomAPI.Model.Response;
+﻿using ChatRoomAPI.Configuration;
+using ChatRoomAPI.Model.Request;
+using ChatRoomAPI.Model.Response;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +12,10 @@ using System.Reflection;
 using System.Text.Json.Nodes;
 using System.Text.Json;
 
-namespace chatRoomAPI.Controllers
+namespace ChatRoomAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiExplorerSettings(GroupName = "front")]
+    [Route("api/front/[controller]")]
     [ApiController]
     public class CreateChatRoomController : ControllerBase
     {

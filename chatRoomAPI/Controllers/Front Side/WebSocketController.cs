@@ -1,5 +1,5 @@
-﻿using chatRoomAPI.Model.Request;
-using chatRoomAPI.Model.Response;
+﻿using ChatRoomAPI.Model.Request;
+using ChatRoomAPI.Model.Response;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +10,10 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace chatRoomAPI.Controllers
+namespace ChatRoomAPI.Controllers
 {
-    [Route("[controller]")]
+    [ApiExplorerSettings(GroupName = "front")]
+    [Route("ws/front/[controller]")]
     [ApiController]
     public class WebSocketController : ControllerBase
     {

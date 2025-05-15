@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace chatRoomAPI.Model
+namespace ChatRoomAPI.Model
 {
     public class RequestRefreshToken
     {

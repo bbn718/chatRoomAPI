@@ -1,4 +1,4 @@
-﻿namespace chatRoomAPI.Model.Request
+﻿namespace ChatRoomAPI.Model.Request
 {
     public class RequestWebSocket
     {

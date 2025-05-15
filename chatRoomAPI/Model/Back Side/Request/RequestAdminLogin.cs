@@ -1,4 +1,4 @@
-﻿namespace chatRoomAPI.Model.Back_Side.Request
+﻿namespace ChatRoomAPI.Model.Back_Side.Request
 {
     public class RequestAdminLogin
     {

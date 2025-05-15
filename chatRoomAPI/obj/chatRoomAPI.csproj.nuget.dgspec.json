@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj": {}
+    "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\ChatRoomAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj": {
+    "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\ChatRoomAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj",
-        "projectName": "chatRoomAPI",
-        "projectPath": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\chatRoomAPI.csproj",
+        "projectUniqueName": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\ChatRoomAPI.csproj",
+        "projectName": "ChatRoomAPI",
+        "projectPath": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\ChatRoomAPI.csproj",
         "packagesPath": "C:\\Users\\vanis\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\obj\\",
         "projectStyle": "PackageReference",

@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|c:\\users\\vanis\\desktop\\dev\\chatroomapi\\chatroomapi\\controllers\\back side\\getauthenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\controllers\\back side\\getauthenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|c:\\users\\vanis\\desktop\\dev\\chatroomapi\\chatroomapi\\controllers\\back side\\getpagedetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\controllers\\back side\\getpagedetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|c:\\users\\vanis\\desktop\\dev\\chatroomapi\\chatroomapi\\model\\back side\\response\\responsegetpagedetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\model\\back side\\response\\responsegetpagedetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|c:\\users\\vanis\\desktop\\dev\\chatroomapi\\chatroomapi\\controllers\\back side\\getmemberdetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\controllers\\back side\\getmemberdetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|c:\\users\\vanis\\desktop\\dev\\chatroomapi\\chatroomapi\\controllers\\back side\\getpagelistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63F8E9E7-59E8-4FE9-8135-0733247DFF35}|chatRoomAPI\\chatRoomAPI.csproj|solutionrelative:chatroomapi\\controllers\\back side\\getpagelistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 113,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetAuthenticationController.cs",
-              "DocumentMoniker": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\Back Side\\GetAuthenticationController.cs",
-              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\Back Side\\GetAuthenticationController.cs",
-              "ToolTip": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\Back Side\\GetAuthenticationController.cs",
-              "RelativeToolTip": "chatRoomAPI\\Controllers\\Back Side\\GetAuthenticationController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAADwvxsAAABfAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ResponseGetPageDetail.cs",
+              "DocumentMoniker": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Model\\Back Side\\Response\\ResponseGetPageDetail.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Model\\Back Side\\Response\\ResponseGetPageDetail.cs",
+              "ToolTip": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Model\\Back Side\\Response\\ResponseGetPageDetail.cs",
+              "RelativeToolTip": "chatRoomAPI\\Model\\Back Side\\Response\\ResponseGetPageDetail.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAswBUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-15T12:18:58.714Z",
+              "WhenOpened": "2025-05-09T12:19:03.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetPageDetailController.cs",
+              "DocumentMoniker": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\Back Side\\GetPageDetailController.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\Back Side\\GetPageDetailController.cs",
+              "ToolTip": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\Back Side\\GetPageDetailController.cs",
+              "RelativeToolTip": "chatRoomAPI\\Controllers\\Back Side\\GetPageDetailController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-09T12:18:12.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetPageListController.cs",
+              "DocumentMoniker": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\Back Side\\GetPageListController.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\Back Side\\GetPageListController.cs",
+              "ToolTip": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\Back Side\\GetPageListController.cs",
+              "RelativeToolTip": "chatRoomAPI\\Controllers\\Back Side\\GetPageListController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-09T12:17:24.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetMemberDetailController.cs",
+              "DocumentMoniker": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\Back Side\\GetMemberDetailController.cs",
+              "RelativeDocumentMoniker": "chatRoomAPI\\Controllers\\Back Side\\GetMemberDetailController.cs",
+              "ToolTip": "C:\\Users\\vanis\\Desktop\\Dev\\chatRoomAPI\\chatRoomAPI\\Controllers\\Back Side\\GetMemberDetailController.cs",
+              "RelativeToolTip": "chatRoomAPI\\Controllers\\Back Side\\GetMemberDetailController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T17:16:54.546Z",
               "EditorCaption": ""
             }
           ]

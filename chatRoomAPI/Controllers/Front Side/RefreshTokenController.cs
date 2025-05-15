@@ -1,7 +1,7 @@
-﻿using chatRoomAPI.Configuration;
-using chatRoomAPI.Model;
-using chatRoomAPI.Model.Response;
-using chatRoomAPI.TokenService;
+﻿using ChatRoomAPI.Configuration;
+using ChatRoomAPI.Model;
+using ChatRoomAPI.Model.Response;
+using ChatRoomAPI.TokenService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -14,9 +14,10 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace chatRoomAPI.Controllers
+namespace ChatRoomAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiExplorerSettings(GroupName = "front")]
+    [Route("api/front/[controller]")]
     [ApiController]
     public class RefreshTokenController : ControllerBase
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace chatRoomAPI.Model.Request
+namespace ChatRoomAPI.Model.Request
 {
     public class RequestJoinChatRoom
     {

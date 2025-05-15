@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Security.Claims;
 
-namespace chatRoomAPI.TokenService
+namespace ChatRoomAPI.TokenService
 {
     public interface ITokenService
     {

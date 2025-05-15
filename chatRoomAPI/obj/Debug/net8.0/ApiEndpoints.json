@@ -1,40 +1,40 @@
 [
   {
-    "ContainingType": "chatRoomAPI.Controllers.Back_Side.AdminLoginController",
+    "ContainingType": "ChatRoomAPI.Controllers.Back_Side.AdminLoginController",
     "Method": "AdminLogin",
-    "RelativePath": "api/AdminLogin",
+    "RelativePath": "api/back/AdminLogin",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "requestData",
-        "Type": "chatRoomAPI.Model.Back_Side.Request.RequestAdminLogin",
+        "Type": "ChatRoomAPI.Model.Back_Side.Request.RequestAdminLogin",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "chatRoomAPI.Controllers.CreateChatRoomController",
-    "Method": "CreateChatRoom",
-    "RelativePath": "api/CreateChatRoom",
-    "HttpMethod": "POST",
+    "ContainingType": "ChatRoomAPI.Controllers.Back_Side.GetBulletinsDetailController",
+    "Method": "GetBulletinsDetail",
+    "RelativePath": "api/back/GetBulletinsDetail",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "requestData",
-        "Type": "chatRoomAPI.Model.Request.RequestCreateChatRoom",
-        "IsRequired": true
+        "Name": "title",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "chatRoomAPI.Controllers.Back_Side.GetAdminGroupDataController",
-    "Method": "GetAdminGroupData",
-    "RelativePath": "api/GetAdminGroupData",
+    "ContainingType": "ChatRoomAPI.Controllers.Back_Side.GetBulletinsListController",
+    "Method": "GetBulletinsList",
+    "RelativePath": "api/back/GetBulletinsList",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -42,25 +42,119 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "chatRoomAPI.Controllers.Back_Side.GetAuthenticationController",
-    "Method": "GetAuthentication",
-    "RelativePath": "api/GetAuthentication",
+    "ContainingType": "ChatRoomAPI.Controllers.Back_Side.GetComponentDetailController",
+    "Method": "GetComponentDetail",
+    "RelativePath": "api/back/GetComponentDetail",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "requestData",
-        "Type": "chatRoomAPI.Model.Back_Side.Request.RequestGetAuthentication",
+        "Name": "domId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatRoomAPI.Controllers.Back_Side.GetComponentListController",
+    "Method": "GetComponentList",
+    "RelativePath": "api/back/GetComponentList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatRoomAPI.Controllers.Back_Side.GetHomePageDataController",
+    "Method": "GetHomePageData",
+    "RelativePath": "api/back/GetHomePageData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatRoomAPI.Controllers.Back_Side.GetMemberDetailController",
+    "Method": "GetMemberDetail",
+    "RelativePath": "api/back/GetMemberDetail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "account",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatRoomAPI.Controllers.Back_Side.GetMemberListController",
+    "Method": "GetMemberList",
+    "RelativePath": "api/back/GetMemberList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatRoomAPI.Controllers.Back_Side.GetPageListController",
+    "Method": "GetPageList",
+    "RelativePath": "api/back/GetPageList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "account",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatRoomAPI.Controllers.Back_Side.ModifyPasswordController",
+    "Method": "ModifyPassword",
+    "RelativePath": "api/back/ModifyPassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ChatRoomAPI.Model.Back_Side.Request.RequestModifyPassword",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "chatRoomAPI.Controllers.GetChatRoomInfoController",
+    "ContainingType": "ChatRoomAPI.Controllers.CreateChatRoomController",
+    "Method": "CreateChatRoom",
+    "RelativePath": "api/front/CreateChatRoom",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestData",
+        "Type": "ChatRoomAPI.Model.Request.RequestCreateChatRoom",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChatRoomAPI.Controllers.GetChatRoomInfoController",
     "Method": "GetChatRoomInfo",
-    "RelativePath": "api/GetChatRoomInfo/{chatRoomCode}",
+    "RelativePath": "api/front/GetChatRoomInfo/{chatRoomCode}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -94,73 +188,73 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "chatRoomAPI.Controllers.JoinChatRoomController",
+    "ContainingType": "ChatRoomAPI.Controllers.JoinChatRoomController",
     "Method": "JoinChatRoom",
-    "RelativePath": "api/JoinChatRoom",
+    "RelativePath": "api/front/JoinChatRoom",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "requestData",
-        "Type": "chatRoomAPI.Model.Request.RequestJoinChatRoom",
+        "Type": "ChatRoomAPI.Model.Request.RequestJoinChatRoom",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "chatRoomAPI.Controllers.LoginController",
+    "ContainingType": "ChatRoomAPI.Controllers.LoginController",
     "Method": "Login",
-    "RelativePath": "api/Login",
+    "RelativePath": "api/front/Login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "requestData",
-        "Type": "chatRoomAPI.Model.RequestLogin",
+        "Type": "ChatRoomAPI.Model.RequestLogin",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "chatRoomAPI.Controllers.LogoutController",
+    "ContainingType": "ChatRoomAPI.Controllers.LogoutController",
     "Method": "Logout",
-    "RelativePath": "api/Logout",
+    "RelativePath": "api/front/Logout",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "requestData",
-        "Type": "chatRoomAPI.Model.Request.RequestLogout",
+        "Type": "ChatRoomAPI.Model.Request.RequestLogout",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "chatRoomAPI.Controllers.RefreshTokenController",
+    "ContainingType": "ChatRoomAPI.Controllers.RefreshTokenController",
     "Method": "RefreshToken",
-    "RelativePath": "api/RefreshToken",
+    "RelativePath": "api/front/RefreshToken",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "requestData",
-        "Type": "chatRoomAPI.Model.RequestRefreshToken",
+        "Type": "ChatRoomAPI.Model.RequestRefreshToken",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "chatRoomAPI.Controllers.RemoveChatRoomController",
+    "ContainingType": "ChatRoomAPI.Controllers.RemoveChatRoomController",
     "Method": "RemoveChatRoom",
-    "RelativePath": "api/RemoveChatRoom/{chatRoomCode}",
+    "RelativePath": "api/front/RemoveChatRoom/{chatRoomCode}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -174,9 +268,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "chatRoomAPI.Controllers.WebSocketController",
+    "ContainingType": "ChatRoomAPI.Controllers.WebSocketController",
     "Method": "Get",
-    "RelativePath": "WebSocket/{chatRoomCode}",
+    "RelativePath": "ws/front/WebSocket/{chatRoomCode}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

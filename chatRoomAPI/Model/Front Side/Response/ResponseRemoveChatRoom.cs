@@ -1,4 +1,4 @@
-﻿namespace chatRoomAPI.Model.Response
+﻿namespace ChatRoomAPI.Model.Response
 {
     public class ResponseRemoveChatRoom
     {

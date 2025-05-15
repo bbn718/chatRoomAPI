@@ -1,4 +1,4 @@
-using chatRoomAPI.TokenService;
+using ChatRoomAPI.TokenService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -13,6 +13,33 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
+    // Front Site 分組
+    options.SwaggerDoc("front", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Front Site API",
+        Description = "API for Front-end Site"
+    });
+
+    // Back Site 分組
+    options.SwaggerDoc("back", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Back Site API",
+        Description = "API for Back-end Site"
+    });
+
+    // 根據控制器上的 GroupName 來決定歸屬哪一組 SwaggerDoc
+    options.DocInclusionPredicate((docName, apiDesc) =>
+    {
+        var groupName = apiDesc.GroupName ?? "";
+        return docName.Equals(groupName, StringComparison.OrdinalIgnoreCase);
+    });
+
+    // 若你希望每個 Controller 顯示自己在 Group 中的名稱，可加這一行
+    options.TagActionsBy(api =>
+        new[] { api.GroupName ?? api.ActionDescriptor.RouteValues["controller"] });
+
     options.AddSecurityDefinition("Bearer",
         new OpenApiSecurityScheme
         {
@@ -93,7 +120,11 @@ app.UseCors("AllowSpecificOrigin");
 app.UseWebSockets(webSocketOptions);
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/front/swagger.json", "Front Site API");
+    options.SwaggerEndpoint("/swagger/back/swagger.json", "Back Site API");
+});
 
 app.UseHttpsRedirection();
 
